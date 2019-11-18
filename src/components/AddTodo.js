@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addTodo } from "../redux/actions";
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -13,6 +15,8 @@ class AddTodo extends React.Component {
   handleAddTodo = () => {
     // dispatches actions to add todo
     // sets state back to empty string
+    this.props.addTodo(this.state.input);
+    this.setState({ input: "" });
   };
 
   render() {
@@ -30,4 +34,4 @@ class AddTodo extends React.Component {
   }
 }
 
-export default AddTodo;
+export default connect(null, { addTodo })(AddTodo);
